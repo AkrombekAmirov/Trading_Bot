@@ -1,10 +1,10 @@
-from environs import Env
+from dotenv import load_dotenv
+from os import environ
 
-# environs kutubxonasidan foydalanish
-env = Env()
-env.read_env()
+load_dotenv()
 
-# .env fayl ichidan quyidagilarni o'qiymiz
-BOT_TOKEN = env.str("BOT_TOKEN")  # Bot toekn
-ADMINS = env.list("ADMINS")  # adminlar ro'yxati
-IP = env.str("ip")  # Xosting ip manzili
+BOT_TOKEN = environ.get("BOT_TOKEN")  # Bot toekn
+ADMINS = environ.get("ADMIN")  # adminlar ro'yxati
+ADMIN_M1 = environ.get("ADMIN1")
+ADMIN_M2 = environ.get("ADMIN2")
+IP = environ.get("IP")  # Xosting ip manzili
