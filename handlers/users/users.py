@@ -65,4 +65,5 @@ async def answer_name(message: Message, state: FSMContext, raw_state: FSMContext
     await message.answer(
         f"Topilgan qiymatlar  70 foizi={custom_round(len(sorted_numbers) * 0.30)}\n{sorted_numbers[:custom_round(len(sorted_numbers) * 0.30)]}\n"
         f"Tegishli qiymatlar: {await extract_sp_values(tp_numbers, sp_numbers, tp_30)}")
+    await message.answer(f"Tartiblangan ruyhat:{sorted_numbers}")
     await state.finish()
