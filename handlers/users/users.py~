@@ -65,9 +65,18 @@ async def answer_name(message: Message, state: FSMContext, raw_state: FSMContext
     sp_numbers = data.get("sp_list")
     sorted_numbers = sorted(tp_numbers)
     filtered_tp = [x for x in sorted_numbers if x <= limit]
+    tp_20 = sorted_numbers[:custom_round(len(sorted_numbers) * 0.20)]
+    tp_25 = sorted_numbers[:custom_round(len(sorted_numbers) * 0.25)]
+    tp_30 = sorted_numbers[:custom_round(len(sorted_numbers) * 0.30)]
     await message.answer(
         f"Topilgan qiymatlar  80 foizi={custom_round(len(sorted_numbers) * 0.20)}\n{filtered_tp}\n"
         f"Tegishli qiymatlar: {await extract_sp_values(tp_numbers, sp_numbers, filtered_tp)}")
+    # await message.answer(
+    #     f"Topilgan qiymatlar  75 foizi={custom_round(len(sorted_numbers) * 0.25)}\n{sorted_numbers[:custom_round(len(sorted_numbers) * 0.25)]}\n"
+    #     f"Tegishli qiymatlar: {await extract_sp_values(tp_numbers, sp_numbers, tp_25)}")
+    # await message.answer(
+    #     f"Topilgan qiymatlar  70 foizi={custom_round(len(sorted_numbers) * 0.30)}\n{sorted_numbers[:custom_round(len(sorted_numbers) * 0.30)]}\n"
+    #     f"Tegishli qiymatlar: {await extract_sp_values(tp_numbers, sp_numbers, tp_30)}")
     await message.answer(f"Tartiblangan ruyhat:{sorted_numbers}")
     await message.answer(f"sp ma'lumotlari:{sp_numbers}")
     await message.answer(f"Kerakli sonni kiriting:")
