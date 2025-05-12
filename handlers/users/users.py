@@ -66,7 +66,7 @@ async def answer_name(message: Message, state: FSMContext, raw_state: FSMContext
     sorted_numbers = sorted(tp_numbers)
     filtered_tp = [x for x in sorted_numbers if x <= limit]
     await message.answer(
-        f"Topilgan qiymatlar  80 foizi={custom_round(len(sorted_numbers) * 0.20)}\n{filtered_tp}\n"
+        f"Kiritilgan sonni indeks qiymati:={len(filtered_tp)}\n{filtered_tp}\n"
         f"Tegishli qiymatlar: {await extract_sp_values(tp_numbers, sp_numbers, filtered_tp)}")
     await message.answer(f"Tartiblangan ruyhat:{sorted_numbers}")
     await message.answer(f"sp ma'lumotlari:{sp_numbers}")
