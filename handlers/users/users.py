@@ -41,6 +41,10 @@ async def bot_start(message: Message):
 
 @dp.message_handler(content_types=ContentTypes.TEXT, state=Users.zero)
 async def answer_name(message: Message, state: FSMContext):
+    if message.text == "/start":
+        await message.answer(f"Salom, {message.from_user.full_name}! \n TP ma'lumotlarni yuboring!")
+        await Users.zero.set()
+        return
     await state.update_data({"tp_list": list(map(int, message.text.split()))})
     await message.answer("SP ma'lumotlarni yuboring!")
     await Users.one.set()
@@ -48,6 +52,10 @@ async def answer_name(message: Message, state: FSMContext):
 
 @dp.message_handler(content_types=ContentTypes.TEXT, state=Users.one)
 async def answer_name(message: Message, state: FSMContext):
+    if message.text == "/start":
+        await message.answer(f"Salom, {message.from_user.full_name}! \n TP ma'lumotlarni yuboring!")
+        await Users.zero.set()
+        return
     await state.update_data({"sp_list": list(map(int, message.text.split()))})
     await message.answer("Kerakli sonni kiriting:")
     await Users.two.set()
