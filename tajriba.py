@@ -42,7 +42,7 @@ def generate_sql_for_date(date_str: str, entries_per_user: int = 2):
         for _ in range(entries_per_user):
             # Random vaqt oralig'i: 08:50 dan 09:15 gacha
             start_time = datetime.combine(base_date, datetime.strptime("08:50:00", "%H:%M:%S").time())
-            end_time = datetime.combine(base_date, datetime.strptime("09:00:00", "%H:%M:%S").time())
+            end_time = datetime.combine(base_date, datetime.strptime("09:20:00", "%H:%M:%S").time())
             rand_seconds = random.randint(0, int((end_time - start_time).total_seconds()))
             rand_dt = start_time + timedelta(seconds=rand_seconds)
 
@@ -71,5 +71,5 @@ def generate_sql_for_date(date_str: str, entries_per_user: int = 2):
 
 # === Ishlatish ===
 if __name__ == "__main__":
-    sana = "2025-12-11"   # siz faqat bitta sanani kiritasiz
-    print(generate_sql_for_date(sana))
+    sana = "2026-01-26"   # siz faqat bitta sanani kiritasiz
+    print(generate_sql_for_date( sana))
